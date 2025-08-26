@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download YouTube videos in various formats and resolutions">
     <title>YouTube Video Downloader</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
 </head>
 
 <body>
@@ -16,58 +17,60 @@
             <p class="description">Paste a YouTube URL below to check available formats and download the video</p>
         </header>
 
-        <div class="input-group">
-            <label for="youtube-url"><i class="fas fa-link"></i> YouTube URL</label>
-            <div class="url-input-container">
-                <i class="fab fa-youtube"></i>
-                <input type="text" id="youtube-url" placeholder="https://www.youtube.com/watch?v=..."
-                    aria-label="YouTube URL" />
-                <button class="check-btn" id="check-btn" aria-label="Check available formats">Check Formats</button>
-            </div>
-        </div>
-
-        <div class="error-message" id="error-message">
-            <i class="fas fa-exclamation-circle"></i> <span id="error-text">Please enter a valid YouTube URL</span>
-        </div>
-
-        <div class="loader" id="loader">
-            <div class="spinner"></div>
-            <p>Checking available formats...</p>
-        </div>
-
-        <div class="video-info" id="video-info">
-            <div class="video-preview">
-                <img src="" alt="Video thumbnail" id="thumbnail">
-            </div>
-            <div class="video-details">
-                <h2 class="video-title" id="video-title">Video Title</h2>
-                <div class="video-metadata" id="video-metadata">
-                    <div>Channel: <span id="video-channel">Unknown</span></div>
-                    <div>Duration: <span id="video-duration">00:00</span></div>
-                </div>
-                <div class="format-info" id="format-info">
-                    <i class="fas fa-info-circle"></i>
-                    <span id="format-text">Available formats will be shown here</span>
+        <main>
+            <div class="input-group">
+                <label for="youtube-url"><i class="fas fa-link"></i> YouTube URL</label>
+                <div class="url-input-container">
+                    <i class="fab fa-youtube"></i>
+                    <input type="text" id="youtube-url" placeholder="https://www.youtube.com/watch?v=..."
+                        aria-label="YouTube URL" />
+                    <button class="check-btn" id="check-btn" aria-label="Check available formats">Check Formats</button>
                 </div>
             </div>
-        </div>
 
-        <div class="dropdown-group" id="dropdown-group">
-            <label for="format-select"><i class="fas fa-desktop"></i> Select Format</label>
-            <select id="format-select" aria-label="Select video format">
-                <option value="">-- Select Format --</option>
-                <!-- Options will be populated by JavaScript -->
-            </select>
-            <div class="format-details" id="format-details">
-                <span id="format-type">MP4</span>
-                <span id="format-codec">H.264</span>
-                <span id="format-size">~150 MB</span>
+            <div class="error-message" id="error-message">
+                <i class="fas fa-exclamation-circle"></i> <span id="error-text">Please enter a valid YouTube URL</span>
             </div>
-        </div>
 
-        <button class="download-btn" id="download-btn" aria-label="Download video">
-            <i class="fas fa-download"></i> Download Video
-        </button>
+            <div class="loader" id="loader">
+                <div class="spinner"></div>
+                <p>Checking available formats...</p>
+            </div>
+
+            <div class="video-info" id="video-info">
+                <div class="video-preview">
+                    <img src="" alt="Video thumbnail" id="thumbnail">
+                </div>
+                <div class="video-details">
+                    <h2 class="video-title" id="video-title">Video Title</h2>
+                    <div class="video-metadata" id="video-metadata">
+                        <div>Channel: <span id="video-channel">Unknown</span></div>
+                        <div>Duration: <span id="video-duration">00:00</span></div>
+                    </div>
+                    <div class="format-info" id="format-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span id="format-text">Available formats will be shown here</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown-group" id="dropdown-group">
+                <label for="format-select"><i class="fas fa-desktop"></i> Select Format</label>
+                <select id="format-select" aria-label="Select video format">
+                    <option value="">-- Select Format --</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+                <div class="format-details" id="format-details">
+                    <span id="format-type">MP4</span>
+                    <span id="format-codec">H.264</span>
+                    <span id="format-size">~150 MB</span>
+                </div>
+            </div>
+
+            <button class="download-btn" id="download-btn" aria-label="Download video">
+                <i class="fas fa-download"></i> Download Video
+            </button>
+        </main>
     </div>
 
     <footer>
@@ -76,5 +79,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>
