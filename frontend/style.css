@@ -78,12 +78,17 @@ input[type="text"] {
     font-size: 16px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    color: #333; /* Added for better text contrast */
 }
 
 input[type="text"]:focus {
     outline: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     background: #fff;
+}
+
+input[type="text"]::placeholder {
+    color: #888; /* Better placeholder contrast */
 }
 
 .check-btn {
@@ -110,6 +115,13 @@ input[type="text"]:focus {
     transform: translateY(0);
 }
 
+.check-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .dropdown-group {
     margin-bottom: 20px;
     display: none;
@@ -126,6 +138,7 @@ select {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: all 0.3s ease;
+    color: #333; /* Added for better text contrast */
 }
 
 select:focus {
@@ -141,6 +154,8 @@ select:focus {
     margin-top: 10px;
     font-size: 14px;
     display: none;
+    flex-wrap: wrap; /* Allow items to wrap on mobile */
+    gap: 8px; /* Consistent spacing */
 }
 
 .format-details span {
@@ -148,8 +163,7 @@ select:focus {
     background: rgba(255, 255, 255, 0.15);
     padding: 4px 8px;
     border-radius: 4px;
-    margin-right: 8px;
-    margin-bottom: 6px;
+    margin-right: 0; /* Replaced with gap */
 }
 
 .download-btn {
@@ -180,6 +194,13 @@ select:focus {
     transform: translateY(0);
 }
 
+.download-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .video-info {
     display: flex;
     gap: 20px;
@@ -193,11 +214,14 @@ select:focus {
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     max-width: 320px;
+    background: #000; /* Background for loading state */
+    min-height: 180px; /* Prevent layout shift */
 }
 
 .video-preview img {
     width: 100%;
     display: block;
+    height: auto;
 }
 
 .video-details {
@@ -211,11 +235,17 @@ select:focus {
     font-size: 1.4rem;
     margin-bottom: 10px;
     font-weight: 600;
+    line-height: 1.3; /* Better text wrapping */
 }
 
 .video-metadata {
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.video-metadata div {
+    margin-bottom: 5px;
 }
 
 .format-info {
@@ -242,6 +272,11 @@ select:focus {
     margin: 0 auto;
 }
 
+.loader p {
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
 .error-message {
     background: rgba(255, 0, 0, 0.2);
     border-left: 4px solid #ff4b4b;
@@ -249,27 +284,17 @@ select:focus {
     border-radius: 4px;
     margin-top: 15px;
     display: none;
-}
-
-.backend-info {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 30px;
-    display: block;
-}
-
-.backend-info pre {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    border-radius: 5px;
-    overflow-x: auto;
-    margin-top: 10px;
+    animation: fadeIn 0.3s ease; /* Smooth appearance */
 }
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 footer {
@@ -279,6 +304,8 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Remove .backend-info styles since we removed that element */
+
 @media (max-width: 768px) {
     .video-info {
         flex-direction: column;
@@ -286,6 +313,14 @@ footer {
     
     .video-preview {
         max-width: 100%;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
     }
 }
 
@@ -302,5 +337,15 @@ footer {
     
     h1 {
         font-size: 2rem;
+    }
+    
+    .format-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    
+    .format-details span {
+        margin-bottom: 0;
     }
 }
